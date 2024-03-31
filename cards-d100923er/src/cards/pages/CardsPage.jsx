@@ -7,23 +7,22 @@ import CardsFeedback from "../components/CardsFeedback";
 export default function CardsPage() {
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   const [error, setError] = useState();
 
   useEffect(() => {
     const getCardsData = async () => {
       try {
+        setError(null);
         setIsLoading(true);
         const response = await axios.get(
           "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards"
         );
         const data = response.data;
         setCards(data);
-        setIsLoading(false);
       } catch (err) {
-        setIsLoading(false);
         setError(err.message);
       }
+      setIsLoading(false);
     };
 
     getCardsData();
