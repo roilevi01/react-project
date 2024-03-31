@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import useCounter from "./hooks/useCounter";
-export default function Counter() {
-  const { counter, increment, decrement, reset } = useCounter(50, 3);
+export default function Counter1() {
+  const { counter, increment, decrement } = useCounter(100);
 
   return (
     <Box>
@@ -13,7 +13,6 @@ export default function Counter() {
         -
       </Button>
       <Typography variant="h3">{counter}</Typography>
-      <Button onClick={reset}>Reset</Button>
     </Box>
   );
 }

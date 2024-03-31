@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Cards from "../components/Cards";
 import PageHeader from "../../components/PageHeader";
 import axios from "axios";
 import CardsFeedback from "../components/CardsFeedback";
@@ -35,14 +34,12 @@ export default function CardsPage() {
   const handleCardLike = (id) => {
     console.log("you liked card no" + id);
   };
-
   return (
     <div>
       <PageHeader
         title="Cards"
         subtitle="On this page you can find all bussines cards from all categories"
       />
-
       <CardsFeedback
         cards={cards}
         handleDelete={handleCardDelete}
