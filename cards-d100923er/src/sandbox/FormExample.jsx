@@ -1,47 +1,61 @@
 import React, { useState } from "react";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, Container, TextField } from "@mui/material";
 import Joi from "joi";
+import useForm from "../forms/hooks/useForm";
+import Form from "../forms/components/Form";
+import ROUTES from "../routes/routesModel";
+import Input from "../forms/components/Input";
 
-const schema = Joi.object({
-  firstName: Joi.string().min(2),
-  lastName: Joi.string().min(2).max(10),
-});
+const schema = {
+  first: Joi.string().min(2),
+  last: Joi.string().min(2).max(10),
+};
+
+const initialForm = {
+  first: "",
+  last: "",
+};
+
+const handleSubmit = (data) => {
+  console.log(data);
+};
 
 export default function FormExample() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-  });
-
-  const handleChange = (event) => {
-    setFormData((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
-  };
-
-  const handleSubmit = () => {
-    const validateObj = schema.validate(formData);
-    console.log(validateObj);
-  };
+  const { data, errors, handleChange, onSubmit, handleReset, validateForm } =
+    useForm(initialForm, schema, handleSubmit);
 
   return (
-    <Box>
-      <Box>
-        <TextField
+    <Container
+      sx={{
+        mt: 8,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Form
+        title="Test Form"
+        onSubmit={onSubmit}
+        onReset={handleReset}
+        styles={{ maxWidth: "450px" }}
+        validateForm={validateForm}
+        to={ROUTES.SANDBOX}
+      >
+        <Input
           label="first name"
-          value={formData.firstName}
-          name="firstName"
+          name="first"
+          data={data}
+          error={errors.first}
           onChange={handleChange}
         />
-        <TextField
+        <Input
           label="last name"
-          value={formData.lastName}
-          name="lastName"
+          name="last"
+          data={data}
+          error={errors.last}
           onChange={handleChange}
         />
-        <Button onClick={handleSubmit}>Submit</Button>
-      </Box>
-    </Box>
+      </Form>
+    </Container>
   );
 }
