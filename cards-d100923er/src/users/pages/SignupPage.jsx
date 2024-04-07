@@ -5,14 +5,21 @@ import signupSchema from "../models/signupSchema";
 import Container from "@mui/material/Container";
 import SignupForm from "../components/SignupForm";
 
-const handleSubmit = (data) => {
-  console.log(data);
+const handleSubmit = (x) => {
+  console.log(x);
 };
 
 export default function SignupPage() {
-  const { data, errors, handleChange, handleReset, validateForm, onSubmit } =
-    useForm(initialSignupForm, signupSchema, handleSubmit);
-  console.log(data);
+  const {
+    data,
+    errors,
+    handleChange,
+    handleReset,
+    validateForm,
+    onSubmit,
+    handleChangeCheckBox,
+  } = useForm(initialSignupForm, signupSchema, handleSubmit);
+
   return (
     <Container
       sx={{
@@ -30,6 +37,7 @@ export default function SignupPage() {
         errors={errors}
         data={data}
         onInputChange={handleChange}
+        handleChangeCheckBox={handleChangeCheckBox}
       />
     </Container>
   );

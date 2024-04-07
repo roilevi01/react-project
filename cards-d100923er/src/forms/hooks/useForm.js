@@ -31,6 +31,25 @@ export default function useForm(initialForm, schema, handleSubmit) {
     }));
   };
 
+  const handleChangeCheckBox = (event) => {
+    const name = event.target.name;
+    const value = event.target.checked;
+    const errorMessage = validateProperty(name, value);
+    if (errorMessage) {
+      setErrors((prev) => ({ ...prev, [name]: errorMessage }));
+    } else {
+      setErrors((prev) => {
+        let obj = { ...prev };
+        delete obj[name];
+        return obj;
+      });
+    }
+    setData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const handleReset = () => {
     setData(initialForm);
     setErrors({});
@@ -47,5 +66,13 @@ export default function useForm(initialForm, schema, handleSubmit) {
     handleSubmit(data);
   };
 
-  return { data, errors, handleChange, handleReset, validateForm, onSubmit };
+  return {
+    data,
+    errors,
+    handleChange,
+    handleReset,
+    validateForm,
+    onSubmit,
+    handleChangeCheckBox,
+  };
 }
