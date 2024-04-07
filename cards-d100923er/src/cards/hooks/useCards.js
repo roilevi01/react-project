@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 export default function useCards() {
   const [card, setCard] = useState(null);
@@ -7,7 +7,7 @@ export default function useCards() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
 
-  const getAllCards = async () => {
+  const getAllCards = useCallback(async () => {
     try {
       setError(null);
       setIsLoading(true);
@@ -20,7 +20,7 @@ export default function useCards() {
       setError(err.message);
     }
     setIsLoading(false);
-  };
+  }, []);
 
   const getCardById = async (id) => {
     try {

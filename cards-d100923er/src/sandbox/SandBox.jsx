@@ -24,6 +24,11 @@ export default function SandBox() {
             sx={{ color: "black" }}
           />
           <NavItem to="form" label="form example" sx={{ color: "black" }} />
+          <NavItem
+            to="optimization"
+            label="Optimization"
+            sx={{ color: "black" }}
+          />
         </Toolbar>
       </AppBar>
 

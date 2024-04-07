@@ -13,6 +13,7 @@ import Counter1 from "../sandbox/Counter1";
 import FormExample from "../sandbox/FormExample";
 import SignupPage from "../users/pages/SignupPage";
 import LoginPage from "../users/pages/LoginPage";
+import ParentComponent from "../sandbox/optimization/ParentComponent";
 
 export default function Router() {
   return (
@@ -31,6 +32,7 @@ export default function Router() {
         <Route path="lifecycle" element={<LifeCycle />} />
         <Route path="countries" element={<Countries />} />
         <Route path="form" element={<FormExample />} />
+        <Route path="optimization" element={<ParentComponent />} />
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>
