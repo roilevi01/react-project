@@ -22,7 +22,7 @@ export default function useCards() {
     setIsLoading(false);
   }, []);
 
-  const getCardById = async (id) => {
+  const getCardById = useCallback(async (id) => {
     try {
       setError(null);
       setIsLoading(true);
@@ -35,15 +35,15 @@ export default function useCards() {
       setError(err.message);
     }
     setIsLoading(false);
-  };
+  }, []);
 
-  const handleCardDelete = (id) => {
+  const handleCardDelete = useCallback((id) => {
     console.log("you deleted card no" + id);
-  };
+  }, []);
 
-  const handleCardLike = (id) => {
+  const handleCardLike = useCallback((id) => {
     console.log("you liked card no" + id);
-  };
+  }, []);
 
   return {
     cards,

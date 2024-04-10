@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PageHeader from "../../components/PageHeader";
-import axios from "axios";
+
 import CardsFeedback from "../components/CardsFeedback";
 import useCards from "../hooks/useCards";
 

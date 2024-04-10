@@ -4,12 +4,17 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import CallIcon from "@mui/icons-material/Call";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useUser } from "../../../users/providers/UserProvider";
 
 export default function CardActionBar({
   handleCardLike,
   handleCardDelete,
   cardId,
+  userId,
 }) {
+  const user = useUser();
+  console.log(user);
+
   const handleCardEdit = (id) => {
     console.log("navigate to edit page for card " + id);
   };
@@ -17,13 +22,18 @@ export default function CardActionBar({
   return (
     <CardActions sx={{ paddingTop: 0, justifyContent: "space-between" }}>
       <Box>
-        <IconButton onClick={() => handleCardDelete(cardId)}>
-          <DeleteIcon />
-        </IconButton>
-        <IconButton onClick={() => handleCardEdit(cardId)}>
-          <ModeEditIcon />
-        </IconButton>
+        {user.isAdmin || user._id === userId ? (
+          <>
+            <IconButton onClick={() => handleCardDelete(cardId)}>
+              <DeleteIcon />
+            </IconButton>
+            <IconButton onClick={() => handleCardEdit(cardId)}>
+              <ModeEditIcon />
+            </IconButton>
+          </>
+        ) : null}
       </Box>
+
       <Box>
         <IconButton>
           <CallIcon />

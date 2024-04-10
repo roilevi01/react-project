@@ -14,6 +14,7 @@ import FormExample from "../sandbox/FormExample";
 import SignupPage from "../users/pages/SignupPage";
 import LoginPage from "../users/pages/LoginPage";
 import ParentComponent from "../sandbox/optimization/ParentComponent";
+import ParentComponentPage from "../sandbox/context/ParentComponentPage";
 
 export default function Router() {
   return (
@@ -33,6 +34,7 @@ export default function Router() {
         <Route path="countries" element={<Countries />} />
         <Route path="form" element={<FormExample />} />
         <Route path="optimization" element={<ParentComponent />} />
+        <Route path="context" element={<ParentComponentPage />} />
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>

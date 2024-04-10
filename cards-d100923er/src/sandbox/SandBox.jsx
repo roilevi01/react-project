@@ -29,6 +29,7 @@ export default function SandBox() {
             label="Optimization"
             sx={{ color: "black" }}
           />
+          <NavItem to="context" label="Context" sx={{ color: "black" }} />
         </Toolbar>
       </AppBar>
 

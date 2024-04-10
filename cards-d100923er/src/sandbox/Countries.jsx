@@ -4,12 +4,12 @@ import { Box, Button, Typography } from "@mui/material";
 
 export default function Countries() {
   const [countriesList, setCountriesList] = useState([]);
-  const [refresh, setRefresh] = useState(false);
 
   const getAllCountries = async () => {
     try {
       setCountriesList([]);
       const response = await axios.get("https://restcountries.com/v3.1/all");
+      console.log("got all countries");
       const data = response.data;
       setCountriesList(data);
     } catch (error) {
