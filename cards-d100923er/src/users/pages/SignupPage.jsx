@@ -4,6 +4,9 @@ import initialSignupForm from "../helpers/initialForms/initialSignupForm";
 import signupSchema from "../models/signupSchema";
 import Container from "@mui/material/Container";
 import SignupForm from "../components/SignupForm";
+import { useUser } from "../providers/UserProvider";
+import { Navigate } from "react-router-dom";
+import ROUTES from "../../routes/routesModel";
 
 const handleSubmit = (x) => {
   console.log(x);
@@ -20,6 +23,9 @@ export default function SignupPage() {
     handleChangeCheckBox,
   } = useForm(initialSignupForm, signupSchema, handleSubmit);
 
+  const { user } = useUser();
+
+  if (user) return <Navigate to={ROUTES.ROOT} replace />;
   return (
     <Container
       sx={{

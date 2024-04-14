@@ -12,7 +12,8 @@ export default function CardActionBar({
   cardId,
   userId,
 }) {
-  const user = useUser();
+  const { user } = useUser();
+
   console.log(user);
 
   const handleCardEdit = (id) => {
