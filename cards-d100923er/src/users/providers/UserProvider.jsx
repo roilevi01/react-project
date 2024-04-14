@@ -1,11 +1,7 @@
 import React, { createContext, useContext, useMemo } from "react";
 
 const UserContext = createContext();
-const user = {
-  _id: "65424ae9a8d1eae12d31e360",
-  isBusiness: true,
-  isAdmin: false,
-};
+const user = null;
 export default function UserProvider({ children }) {
   const value = useMemo(() => ({ user }), []);
 

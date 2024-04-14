@@ -14,8 +14,6 @@ export default function CardActionBar({
 }) {
   const { user } = useUser();
 
-  console.log(user);
-
   const handleCardEdit = (id) => {
     console.log("navigate to edit page for card " + id);
   };
@@ -23,7 +21,7 @@ export default function CardActionBar({
   return (
     <CardActions sx={{ paddingTop: 0, justifyContent: "space-between" }}>
       <Box>
-        {user.isAdmin || user._id === userId ? (
+        {user && (user.isAdmin || user._id === userId) ? (
           <>
             <IconButton onClick={() => handleCardDelete(cardId)}>
               <DeleteIcon />
