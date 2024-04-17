@@ -11,14 +11,13 @@ import { useUser } from "../providers/UserProvider";
 import { Navigate, Link } from "react-router-dom";
 import { Button, Grid } from "@mui/material";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-
-const handleSubmit = (x) => {
-  console.log(x);
-};
+import useUsers from "../hooks/useUsers";
 
 export default function LoginPage() {
+  const { handleLogin } = useUsers();
+
   const { data, errors, handleChange, handleReset, validateForm, onSubmit } =
-    useForm(initialLoginForm, loginSchema, handleSubmit);
+    useForm(initialLoginForm, loginSchema, handleLogin);
 
   const { user } = useUser();
 
