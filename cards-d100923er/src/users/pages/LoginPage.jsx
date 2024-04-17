@@ -9,6 +9,8 @@ import ROUTES from "../../routes/routesModel";
 import Input from "../../forms/components/Input";
 import { useUser } from "../providers/UserProvider";
 import { Navigate } from "react-router-dom";
+import { Button, Grid } from "@mui/material";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 const handleSubmit = (x) => {
   console.log(x);
@@ -60,6 +62,17 @@ export default function LoginPage() {
             onChange={handleChange}
             data={data}
           />
+          <Grid item xs={12}>
+            <Button
+              variant="outlined"
+              component={Link}
+              to={ROUTES.SIGNUP}
+              startIcon={<AccountBoxIcon />}
+              sx={{ width: "100%" }}
+            >
+              Sign Up
+            </Button>
+          </Grid>
         </Form>
       </Container>
     </Container>

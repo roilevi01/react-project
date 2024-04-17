@@ -1,4 +1,4 @@
-import JwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 const TOKEN = "my token";
 
@@ -13,7 +13,7 @@ export const getToken = () => localStorage.getItem(TOKEN);
 export const getUser = () => {
   try {
     const myToken = getToken();
-    return JwtDecode(myToken);
+    return jwtDecode(myToken);
   } catch (error) {
     return null;
   }

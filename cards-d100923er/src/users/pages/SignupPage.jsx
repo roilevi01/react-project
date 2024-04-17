@@ -7,12 +7,11 @@ import SignupForm from "../components/SignupForm";
 import { useUser } from "../providers/UserProvider";
 import { Navigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
-
-const handleSubmit = (x) => {
-  console.log(x);
-};
+import useUsers from "../hooks/useUsers";
 
 export default function SignupPage() {
+  const { handleSignup } = useUsers();
+
   const {
     data,
     errors,
@@ -21,7 +20,7 @@ export default function SignupPage() {
     validateForm,
     onSubmit,
     handleChangeCheckBox,
-  } = useForm(initialSignupForm, signupSchema, handleSubmit);
+  } = useForm(initialSignupForm, signupSchema, handleSignup);
 
   const { user } = useUser();
 
