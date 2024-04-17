@@ -15,7 +15,7 @@ const useUsers = () => {
   const [isLoading, setIsLoading] = useState();
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { user, setUser, setToken } = useUser();
+  const { setUser, setToken } = useUser();
 
   const handleLogin = useCallback(
     async (userLogin) => {
@@ -57,7 +57,7 @@ const useUsers = () => {
     [handleLogin]
   );
 
-  return { user, isLoading, error, handleLogin, handleLogout, handleSignup };
+  return { isLoading, error, handleLogin, handleLogout, handleSignup };
 };
 
 export default useUsers;
