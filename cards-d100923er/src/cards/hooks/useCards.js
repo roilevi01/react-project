@@ -1,5 +1,10 @@
 import { useCallback, useState } from "react";
-import { createCard, getCard, getCards } from "../services/cardsApiService";
+import {
+  createCard,
+  editCard,
+  getCard,
+  getCards,
+} from "../services/cardsApiService";
 import { useSnack } from "../../providers/SnackbarProvider";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
@@ -35,6 +40,7 @@ export default function useCards() {
       setIsLoading(true);
       const data = await getCard(id);
       setCard(data);
+      return data;
     } catch (err) {
       setError(err.message);
     }
@@ -50,6 +56,25 @@ export default function useCards() {
         const card = await createCard(normalizeCard(cardFromClient));
         setCard(card);
         setSnack("success", "A new business card has been created");
+        setTimeout(() => {
+          navigate(ROUTES.ROOT);
+        }, 1000);
+      } catch (error) {
+        setError(error.message);
+      }
+      setIsLoading(false);
+    },
+    [setSnack, navigate]
+  );
+
+  const handleUpdateCard = useCallback(
+    async (cardId, cardFromClient) => {
+      setIsLoading(true);
+
+      try {
+        const card = await editCard(cardId, normalizeCard(cardFromClient));
+        setCard(card);
+        setSnack("success", "The business card has been successfully updated");
         setTimeout(() => {
           navigate(ROUTES.ROOT);
         }, 1000);
@@ -79,5 +104,6 @@ export default function useCards() {
     handleCardDelete,
     handleCardLike,
     handleCreateCard,
+    handleUpdateCard,
   };
 }
