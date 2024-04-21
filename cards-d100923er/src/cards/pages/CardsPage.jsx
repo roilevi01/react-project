@@ -3,6 +3,7 @@ import PageHeader from "../../components/PageHeader";
 
 import CardsFeedback from "../components/CardsFeedback";
 import useCards from "../hooks/useCards";
+import AddNewCardButton from "../components/AddNewCardButton";
 
 export default function CardsPage() {
   const {
@@ -31,6 +32,7 @@ export default function CardsPage() {
         isLoading={isLoading}
         error={error}
       />
+      <AddNewCardButton />
     </div>
   );
 }

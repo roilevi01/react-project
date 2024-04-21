@@ -1,14 +1,20 @@
 import { useCallback, useState } from "react";
-import { getCard, getCards } from "../services/cardsApiService";
+import { createCard, getCard, getCards } from "../services/cardsApiService";
 import { useSnack } from "../../providers/SnackbarProvider";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "../../routes/routesModel";
+import useAxios from "../../hooks/useAxios";
+import normalizeCard from "../helpers/normalization/normalizeCard";
 
 export default function useCards() {
   const [card, setCard] = useState(null);
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
-
+  const navigate = useNavigate();
   const setSnack = useSnack();
+
+  useAxios();
 
   const getAllCards = useCallback(async () => {
     try {
@@ -35,6 +41,26 @@ export default function useCards() {
     setIsLoading(false);
   }, []);
 
+  const handleCreateCard = useCallback(
+    async (cardFromClient) => {
+      setError(null);
+      setIsLoading(true);
+
+      try {
+        const card = await createCard(normalizeCard(cardFromClient));
+        setCard(card);
+        setSnack("success", "A new business card has been created");
+        setTimeout(() => {
+          navigate(ROUTES.ROOT);
+        }, 1000);
+      } catch (error) {
+        setError(error.message);
+      }
+      setIsLoading(false);
+    },
+    [setSnack, navigate]
+  );
+
   const handleCardDelete = useCallback((id) => {
     console.log("you deleted card no" + id);
   }, []);
@@ -52,5 +78,6 @@ export default function useCards() {
     getCardById,
     handleCardDelete,
     handleCardLike,
+    handleCreateCard,
   };
 }
