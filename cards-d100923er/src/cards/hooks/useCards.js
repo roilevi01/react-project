@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useCallback, useState } from "react";
 import { getCard, getCards } from "../services/cardsApiService";
+import { useSnack } from "../../providers/SnackbarProvider";
 
 export default function useCards() {
   const [card, setCard] = useState(null);
@@ -8,17 +8,20 @@ export default function useCards() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
 
+  const setSnack = useSnack();
+
   const getAllCards = useCallback(async () => {
     try {
       setError(null);
       setIsLoading(true);
       const data = await getCards();
       setCards(data);
+      setSnack("success", "All the cards are here");
     } catch (err) {
       setError(err.message);
     }
     setIsLoading(false);
-  }, []);
+  }, [setSnack]);
 
   const getCardById = useCallback(async (id) => {
     try {
