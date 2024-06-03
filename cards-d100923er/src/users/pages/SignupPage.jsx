@@ -3,11 +3,11 @@ import useForm from "../../forms/hooks/useForm";
 import initialSignupForm from "../helpers/initialForms/initialSignupForm";
 import signupSchema from "../models/signupSchema";
 import Container from "@mui/material/Container";
-import SignupForm from "../components/SignupForm";
 import { useUser } from "../providers/UserProvider";
 import { Navigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
 import useUsers from "../hooks/useUsers";
+import SignUpForm from "../components/SignUpForm";
 
 export default function SignUpPage() {
   const { handleSignup } = useUsers();
@@ -34,7 +34,7 @@ export default function SignUpPage() {
         alignItems: "center",
       }}
     >
-      <SignupForm
+      <SignUpForm
         onSubmit={onSubmit}
         onReset={handleReset}
         validateForm={validateForm}

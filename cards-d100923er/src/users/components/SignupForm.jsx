@@ -4,7 +4,7 @@ import ROUTES from "../../routes/routesModel";
 import Input from "../../forms/components/Input";
 import { Grid, FormControlLabel, Checkbox } from "@mui/material";
 
-export default function SignupForm({
+export default function SignUpForm({
   onSubmit,
   onReset,
   validateForm,
