@@ -8,13 +8,13 @@ import CardDetailsPage from "../cards/pages/CardDetailsPage";
 import SandBox from "../sandbox/SandBox";
 
 import FormExample from "../sandbox/FormExample";
-import SignUpPage from "../users/pages/SignUpPage";
 import LoginPage from "../users/pages/LoginPage";
 
 import AddCardPage from "../cards/pages/AddCardPage";
 import EditCardPage from "../cards/pages/EditCardPage";
 import MyCards from "../cards/components/MyCards";
 import MyFevCard from "../cards/components/card/MyFevCard";
+import SignUpPage from "../users/pages/SignUpPage";
 
 export default function Router() {
   return (

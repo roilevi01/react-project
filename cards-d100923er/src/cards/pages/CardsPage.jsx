@@ -33,6 +33,7 @@ export default function CardsPage() {
         error={error}
       />
       <AddNewCardButton />
+      <AddNewCardButton />
     </div>
   );
 }

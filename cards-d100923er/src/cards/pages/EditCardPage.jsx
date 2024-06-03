@@ -12,14 +12,12 @@ import useForm from "../../forms/hooks/useForm";
 import CardForm from "../components/card/CardForm";
 
 export default function EditCardPage() {
-  
   const { id } = useParams();
-  
+
   const { handleUpdateCard, getCardById, card } = useCards();
 
- 
   const { user } = useUser();
- 
+
   const {
     data,
     errors,

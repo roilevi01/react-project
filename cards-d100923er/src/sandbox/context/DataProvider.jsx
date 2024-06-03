@@ -1,6 +1,5 @@
 import React, { createContext, useContext } from "react";
 
-
 const MyContext = createContext();
 
 export default function DataProvider({ children }) {
