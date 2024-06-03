@@ -32,6 +32,8 @@ export default function CardComponent({
         handleCardLike={handleCardLike}
         handleCardDelete={handleCardDelete}
         cardId={card._id}
+        userId={card.user_id}
+        likes={card.likes}
       />
     </Card>
   );

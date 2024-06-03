@@ -1,0 +1,30 @@
+.container {
+  padding: 1rem;
+}
+
+.card {
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 255, 0, 0.3);
+  border-radius: 8px;
+}
+
+.cardContent {
+  padding: 1.5rem;
+}
+
+.carouselContainer {
+  margin-bottom: 3rem;
+  max-width: 100%;
+}
+
+.carouselImage {
+  width: auto;
+  height: 200px;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+}
+
+.iconButton {
+  margin: 0 0.5rem;
+}

@@ -1,0 +1,14 @@
+.title {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: gold;
+}
+
+.appBar {
+  background-color: green;
+  box-shadow: 1px 1px 20px yellow;
+}
+.card {
+  filter: drop-shadow(0px 0px 10px yellow);
+}
