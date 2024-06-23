@@ -69,7 +69,7 @@ export default function useForm(initialForm, schema, handleSubmit) {
     const { error } = schemaForValidate.validate(data);
     if (error) return false;
     return true;
-  }, [data, schema]);
+  }, [schema, data]);
 
   const onSubmit = useCallback(() => {
     handleSubmit(data);
